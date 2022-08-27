@@ -1,3 +1,8 @@
 $(document).ready(function(){
-    $("#container").val("hello world!");
+    main();
+    $("#container").html("<h1>javascript file is workning!</h1>");
 });
+
+function main(){
+    //document.getElementById("container").innerHTML = "hello world!";
+};

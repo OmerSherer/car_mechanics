@@ -12,14 +12,15 @@
 
 
     <body>
-        <div id="container">hello world!</div> <!--a validation that js & css are connected-->
-
-
 
         <div class="frame" id="welcome_container">
 
-            <h1 id="welcome_header">Welcome!</h1>
+            <h1 class="animate-charcter" id="welcome_header">Welcome</h1>
 
+            <div id="container">
+                <span class="text1" id="text1"></span>
+                <span class="text1" id="text2"></span>
+            </div>
             <p>This it the first shown page as the website loads</p>
 
             <ul id="button_list">
@@ -29,6 +30,22 @@
             </ul>
 
         </div>
+
+
+
+
+        <!--for text1 & text2 animation-->
+        <svg id="filters">
+            <defs>
+                <filter id="threshold">
+                    <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0
+                          0 1 0 0 0
+                          0 0 1 0 0
+                          0 0 0 255 -140" />
+                </filter>
+            </defs>
+        </svg>
+        <!---->
           
     </body>
 

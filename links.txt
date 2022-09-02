@@ -1,0 +1,6 @@
+styles:
+
+animations:
+
+https://codepen.io/yuhomyan/pen/OJMejWJ
+https://alvarotrigo.com/blog/css-text-animations/

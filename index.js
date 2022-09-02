@@ -1,6 +1,6 @@
 $(document).ready(function(){
     main();
-    $("#container").html("<h1>javascript file is workning</h1>");
+    $("#container").html("<h1>javascript is workning</h1>");
 });
 
 function main(){

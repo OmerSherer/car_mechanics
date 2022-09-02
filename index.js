@@ -6,3 +6,15 @@ $(document).ready(function(){
 function main(){
     //document.getElementById("container").innerHTML = "<h1>javascript file is workning!</h1>";
 };
+
+function go_to_simulation(){
+
+}
+
+function how_it_works(){
+
+}
+
+function about(){
+    window.location.href = "screens/about/about.html"
+}

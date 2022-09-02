@@ -2,7 +2,10 @@ body {
     background-color: mediumslateblue;
 }
 
-#container{color: orange;}
+#container{
+    color: orange;
+    text-align: center;
+}
 
 #welcome_container {
     border: double;
@@ -19,6 +22,10 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin-top: 5%; 
     color: black;
+}
+
+p{
+    font-size: 30px;
 }
 
 #button_list {

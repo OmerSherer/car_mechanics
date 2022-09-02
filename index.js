@@ -4,5 +4,5 @@ $(document).ready(function(){
 });
 
 function main(){
-    document.getElementById("container").innerHTML = "<h1>javascript file is workning!</h1>";
+    //document.getElementById("container").innerHTML = "<h1>javascript file is workning!</h1>";
 };

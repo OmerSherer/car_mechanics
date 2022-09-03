@@ -150,6 +150,7 @@ p{
     color: #f0094a;
     background: transparent;
     box-shadow:none;
+    border: none;
   }
   .btn-5:before,
   .btn-5:after{

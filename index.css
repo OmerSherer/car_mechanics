@@ -8,6 +8,7 @@ body {
     text-align: center;
     margin-top: 5%;
     width: 60%;
+    /* height: 30vw; */
     margin-left: auto;
     margin-right: auto;
     background-color: antiquewhite;
@@ -29,6 +30,7 @@ p{
 #button_list {
     width: auto;
     display: inline-block;
+    margin-top: 200px;
 }
 
 
@@ -224,7 +226,7 @@ p{
     /* margin: auto; */
     width: 50vw;
     /*height: 80pt; */
-    top: 32.5%;
+    top: 43%;
     left: 25%;
 
     filter: url(#threshold) blur(0.6px);
@@ -236,7 +238,7 @@ p{
     display: inline-block;
 
     font-family: "Raleway", sans-serif;
-    font-size: 70pt;
+    font-size: 55pt;
 
     text-align: center;
 

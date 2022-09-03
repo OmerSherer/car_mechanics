@@ -1,0 +1,35 @@
+body {
+    background-color: mediumslateblue;
+}
+
+#welcome_container {
+    border: 2px solid black;
+    text-align: center;
+    margin-top: 5%;
+    width: 60%;
+    /* height: 30vw; */
+    margin-left: auto;
+    margin-right: auto;
+    background-color: antiquewhite;
+    position: relative;
+}
+
+#welcome_header {
+    font-size: 150px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    margin-top: 5%; 
+    color: black;
+    position: relative;
+    user-select: none;
+    -webkit-text-stroke: 1px black;
+}
+
+p{
+    font-size: 30px;
+}
+
+#button_list {
+    width: auto;
+    display: inline-block;
+    margin-top: 200px;
+}

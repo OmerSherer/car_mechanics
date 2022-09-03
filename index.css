@@ -3,7 +3,7 @@ body {
 }
 
 #welcome_container {
-    border: double;
+    border: 2px solid black;
     text-align: center;
     margin-top: 5%;
     width: 60%;
@@ -21,6 +21,7 @@ body {
     color: black;
     position: relative;
     user-select: none;
+    -webkit-text-stroke: 1px black;
 }
 
 p{
@@ -58,6 +59,7 @@ p{
      4px 4px 5px 0px rgba(0,0,0,.1);
     outline: none;
     user-select: none;
+    border: 2px solid black;
   }
   
 
@@ -69,8 +71,7 @@ p{
     /* height: 40px; */
     line-height: 42px;
     padding: 0;
-    border: none;
-    
+    /* border: none; */
   }
   .btn-3 span {
     position: relative;
@@ -141,7 +142,7 @@ p{
     /* height: 40px; */
     line-height: 42px;
     padding: 0;
-    border: none;
+    /* border: none; */
     background: teal;/*rgb(255,27,0); */
     background: teal,teal;
   }

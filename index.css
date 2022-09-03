@@ -12,6 +12,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     background-color: antiquewhite;
+    position: relative;
 }
 
 #welcome_header {
@@ -224,10 +225,12 @@ p{
     /* top: 100px;
     left: 100px; */
     /* margin: auto; */
-    width: 50vw;
+    /* width: 50vw; */
     /*height: 80pt; */
-    top: 43%;
+    top: 50%;
     left: 25%;
+    right: 25%;
+    bottom: 50%;
 
     filter: url(#threshold) blur(0.6px);
 }

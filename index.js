@@ -1,12 +1,10 @@
 $(document).ready(function(){
     main();
-    alert(document.getElementById("text1").textContent);
-
-    // animation
-    alert(text1);
 });
 
 function main(){
+    elts.text1 = document.getElementById("text1");
+    elts.text2 = document.getElementById("text2");
     elts.text1.textContent = texts[textIndex % texts.length];
     elts.text2.textContent = texts[(textIndex + 1) % texts.length];
     animate();
@@ -32,20 +30,16 @@ function about(){
 
 const texts = [
     "This",
-    "is",
-    "the",
-    "main",
-    "page",
-    "of ",
-    "my",
-    "website",
-    ":D",
-    "by: Omer Sherer"
+    "Project",
+    "Was",
+    "Created",
+    "By: @Bully",
+    ":D"
 ];
 
 const elts = {
-    text1: document.getElementById("text1"),
-    text2: document.getElementById("text2")
+    text1: null,
+    text2: null
 };
 
 const morphTime = 1;
@@ -116,4 +110,4 @@ function animate() {
     }
 }
 
-animate();
+// animate();

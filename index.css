@@ -1,5 +1,6 @@
 body {
     background-color: mediumslateblue;
+    height: 9999px;
 }
 
 #welcome_container {
@@ -17,6 +18,8 @@ body {
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     margin-top: 5%; 
     color: black;
+    position: relative;
+    user-select: none;
 }
 
 p{
@@ -52,6 +55,7 @@ p{
      7px 7px 20px 0px rgba(0,0,0,.1),
      4px 4px 5px 0px rgba(0,0,0,.1);
     outline: none;
+    user-select: none;
   }
   
 
@@ -193,7 +197,7 @@ p{
   background-size: 200% auto;
   color: #fff;
   background-clip: text;
-  text-fill-color: transparent;
+  /*text-fill-color: transparent;*/
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: textclip 2s linear infinite;
@@ -209,20 +213,19 @@ p{
 
 
 
-/* shiting text */
+/* shifting text */
 @import url("https://fonts.googleapis.com/css?family=Raleway:900&display=swap");
 
-body {
-    margin: 0px;
-}
 
 #container {
     position: absolute;
-    margin: auto;
-    width: 100vw;
-    height: 80pt;
-    top: 0;
-    bottom: 0;
+    /* top: 100px;
+    left: 100px; */
+    /* margin: auto; */
+    width: 50vw;
+    /*height: 80pt; */
+    top: 32.5%;
+    left: 25%;
 
     filter: url(#threshold) blur(0.6px);
 }
@@ -233,9 +236,13 @@ body {
     display: inline-block;
 
     font-family: "Raleway", sans-serif;
-    font-size: 80pt;
+    font-size: 70pt;
 
     text-align: center;
 
     user-select: none;
+    top: 0px;
+    left: 0px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: orange;
 }

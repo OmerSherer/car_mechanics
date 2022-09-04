@@ -82,12 +82,10 @@
     position: absolute;
     width: 100%;
     display: inline-block;
-
     font-family: 'Titan One',cursive;
     font-size: 55pt;
     font-weight: 700;
     text-align: center;
-
     user-select: none;
     top: 0px;
     left: 0px;

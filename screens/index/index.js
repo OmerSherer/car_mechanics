@@ -21,9 +21,12 @@ function how_it_works(){
 }
 
 function about(){
-    window.location.href = "screens/about/about.html"
+    window.location.href = "screens/about/about.html";
 }
 
+function attempt(){
+    window.location.href = "screens/attempt/attempt.html";
+};
 
 
 // animation

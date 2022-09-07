@@ -25,7 +25,7 @@ function about(){
 }
 
 function attempt(){
-    window.location.href = "screens/attempt/1_car/index.html";
+    window.location.href = "screens/attempt/index.html";
 };
 
 

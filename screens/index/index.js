@@ -29,6 +29,8 @@ function attempt(){
 };
 
 
+
+
 // animation
 
 const texts = [

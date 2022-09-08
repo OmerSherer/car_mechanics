@@ -50,16 +50,17 @@ class Car{
             const flip=this.speed>0?1:-1;
             if(this.controls.left){
                 this.angle+=this.sensivity*flip;
-                while(this.angle >= 2*PI){
-                    this.angle -= 2*PI;
-                }
             }
             if(this.controls.right){
                 this.angle-=this.sensivity*flip;
-                while(this.angle < 0){
-                    this.angle += 2*PI;
-                }
             }
+        }
+
+        while(this.angle >= 2*PI){
+            this.angle -= 2*PI;
+        }
+        while(this.angle < 0){
+            this.angle += 2*PI;
         }
 
         this.x-=Math.sin(this.angle)*this.speed;
@@ -82,13 +83,10 @@ class Car{
         ctx.fill();
 
         ctx.restore();
-
-        this.isFacingUp();
     }
 
     isFacingUp(){
         if((this.angle < PI/2 && this.angle >= 0) || (this.angle < 2*PI && this.angle > 1.5*PI)){
-            console.log("facing up");
             return true;
         }
         return false;
@@ -112,7 +110,7 @@ class Car{
     }
 
     isDownward(){
-        if((this.isFacingDown() && this.speed > 0) || (this.isFacingUp() && this.speed < 0)) { // da fck?
+        if((this.isFacingDown() && this.speed > 0) || (this.isFacingUp() && this.speed < 0)) { 
             console.log("dowm");
             return true;
         }

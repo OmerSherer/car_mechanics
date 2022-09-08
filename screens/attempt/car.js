@@ -88,7 +88,7 @@ class Car{
 
     isFacingUp(){
         if((this.angle < PI/2 && this.angle >= 0) || (this.angle < 2*PI && this.angle > 1.5*PI)){
-            
+            console.log("facing up");
             return true;
         }
         return false;

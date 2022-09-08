@@ -7,9 +7,10 @@ class Car{
 
         this.speed=0;
         this.acceleration=0.2;
-        this.maxSpeed=4;
+        this.maxSpeed=6;
         this.friction=0.05;
         this.angle=0;
+        this.sensivity = 0.05;
 
         this.color = color;
 
@@ -48,10 +49,16 @@ class Car{
         if(this.speed!=0){
             const flip=this.speed>0?1:-1;
             if(this.controls.left){
-                this.angle+=0.03*flip;
+                this.angle+=this.sensivity*flip;
+                while(this.angle >= 2*Math.PI){
+                    this.angle -= 2*Math.PI;
+                }
             }
             if(this.controls.right){
-                this.angle-=0.03*flip;
+                this.angle-=this.sensivity*flip;
+                while(this.angle < 0){
+                    this.angle += 2*Math.PI;
+                }
             }
         }
 
@@ -75,5 +82,15 @@ class Car{
         ctx.fill();
 
         ctx.restore();
+    }
+
+    isUpward(){
+        if((this.angle < Math.PI/2 && this.angle >= 0 || this.angle < 2*Math.PI && this.angle > 1.5*Math.PI) && this.speed > 0) {
+            console.log("up");
+            return true;
+        }
+        else{
+            return false;
+        }
     }
 }

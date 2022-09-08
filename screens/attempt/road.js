@@ -1,36 +1,51 @@
 class Road{
-    constructor(x,y,width,height,color){
-        this.x=x;
-        this.y=y;
-        this.width=width;
-        this.height=height;
+    constructor(x,width,lane_count){
+        this.x = x;
+        this.width = width;
+        this.lane_count = lane_count;
 
-        this.speed=0;
-        this.acceleration=0.2;
-        this.maxSpeed=4;
-        this.friction=0.05;
-        this.angle=0;
+        this.infinity = 1000000;
 
-        this.color = color;
+        this.top = -this.infinity;
+        this.bottom = this.infinity;
+        this.left = x-width/2;
+        this.right = x+width/2;
 
-        this.controls=new Controls();
+
+        const topLeft={x:this.left,y:this.top};
+        const topRight={x:this.right,y:this.top};
+        const bottomLeft={x:this.left,y:this.bottom};
+        const bottomRight={x:this.right,y:this.bottom};
+        this.borders = [
+            [topLeft,bottomLeft],
+            [topRight,bottomRight]
+        ]
     }
 
     draw(ctx){
-        ctx.save();
-        ctx.fillStyle = this.color;
-        ctx.translate(this.x,this.y);
-        ctx.rotate(-this.angle);
+        ctx.lineWidth=5;
+        ctx.strokeStyle="white";
 
-        ctx.beginPath();
-        ctx.rect(
-            -this.width/2,
-            -this.height/2,
-            this.width,
-            this.height
-        );
-        ctx.fill();
+        for(let i=1;i<=this.lane_count-1;i++){
+            const x=lerp(
+                this.left,
+                this.right,
+                i/this.lane_count
+            );
+            
+            ctx.setLineDash([20,20]);
+            ctx.beginPath();
+            ctx.moveTo(x,this.top);
+            ctx.lineTo(x,this.bottom);
+            ctx.stroke();
+        }
 
-        ctx.restore();
+        ctx.setLineDash([]);
+        this.borders.forEach(border=>{
+            ctx.beginPath();
+            ctx.moveTo(border[0].x,border[0].y);
+            ctx.lineTo(border[1].x,border[1].y);
+            ctx.stroke();
+        });
     }
 }

@@ -5,32 +5,30 @@ const ctx = canvas.getContext("2d");
 const road = new Road(canvas.width*0.5, canvas.width*0.9, 5);
 const car=new Car(canvas.width*0.5,window.innerHeight*0.7,30,50,'#FF0000');
 
-animate(0,0);
+const cam_borders = 0.3;
 
-function animate(x,y){
+var x_draw = 0;
+var y_draw = 0;
+
+animate();
+
+function animate(){
     car.update();
 
     canvas.height=window.innerHeight;
 
-    ctx.save();
-
-    if(car.y <canvas.height*0.2 && car.isUpward()){
-        ctx.translate(0,-car.y + canvas.height*0.2);
+    if(car.y < canvas.height*cam_borders - y_draw && car.isUpward()){
+        x_draw = 0;
+        y_draw = -car.y + canvas.height*cam_borders;
     }
-    else if(car.y <canvas.height*0.2){
-
+    else if(car.y > canvas.height*(1-cam_borders) - y_draw && car.isDownward()){
+        x_draw = 0;
+        y_draw = -car.y + canvas.height*(1-cam_borders);
     }
-    else if(car.y > canvas.height*0.8){
-        ctx.translate(0,-car.y + canvas.height*0.8);
-    }
-    else {
-        ctx.translate(0,0);
-    }
+    ctx.translate(x_draw,y_draw);
     
     road.draw(ctx);
     car.draw(ctx);
 
-    ctx.restore();
-
-    requestAnimationFrame(()=>{animate(car.x,car.y)});
+    requestAnimationFrame(animate);
 }

@@ -11,11 +11,10 @@ class Car{
         this.speed_friction=0.05;
 
         this.angle=0;
-        this.angle_sensivity_left = 0;
-        this.angle_sensivity_right = 0;
-        this.angle_acceleration = 0.0012;
+        this.angle_sensivity = 0;
+        this.angle_acceleration = 0.005;
         this.angle_maxSensivity = 0.05;
-        this.angle_friction = 0.0003;
+        this.angle_friction = 0.0015;
         
         this.color = color;
 
@@ -27,8 +26,34 @@ class Car{
     }
 
     #move(){
-
         // speed
+        this.update_speed();
+
+        // angle
+        this.update_angle("realistic"); // modes: "normal" or "realistic"
+    }
+
+    draw(ctx){
+        ctx.save();
+        ctx.translate(this.x,this.y);
+        ctx.rotate(-this.angle);
+
+
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.rect(
+            -this.width/2,
+            -this.height/2,
+            this.width,
+            this.height
+        );
+        ctx.fill();
+
+        ctx.restore();
+    }
+
+    // speed
+    update_speed(){
         if(this.controls.forward){
             this.speed+=this.speed_acceleration;
         }
@@ -52,47 +77,19 @@ class Car{
         if(Math.abs(this.speed)<this.speed_friction){
             this.speed=0;
         }
+    }
 
-
-        // angle_left
-        if(this.controls.left || this.controls.right){
-            this.angle_sensivity_left+=this.angle_acceleration;
+    // angle
+    update_angle(mode){
+        switch(mode){
+            case "normal":
+                this.update_angle_normal();
+                break;
+            case "realistic":
+                this.update_angle_realistic();
+                break;
         }
-        if(this.angle_sensivity_left>this.angle_maxSensivity){
-            this.angle_sensivity_left=this.angle_maxSensivity;
-        }
-        if(this.angle_sensivity_left>0){
-            this.angle_sensivity_left-=this.angle_friction;
-        }
-        if(Math.abs(this.angle_sensivity_left)<this.angle_friction){
-            this.angle_sensivity_left=0;
-        }
-
-        // angle_right
-        if(this.controls.left || this.controls.right){
-            this.angle_sensivity_left+=this.angle_acceleration;
-        }
-        if(this.angle_sensivity_left>this.angle_maxSensivity){
-            this.angle_sensivity_left=this.angle_maxSensivity;
-        }
-        if(this.angle_sensivity_left>0){
-            this.angle_sensivity_left-=this.angle_friction;
-        }
-        if(Math.abs(this.angle_sensivity_left)<this.angle_friction){
-            this.angle_sensivity_left=0;
-        }
-
-        // angles
-        if(this.speed!=0){
-            const flip=this.speed>0?1:-1;
-            if(this.controls.left){
-                this.angle+=this.angle_sensivity_left*flip;
-            }
-            if(this.controls.right){
-                this.angle-=this.angle_sensivity_left*flip;
-            }
-        }
-
+        
         while(this.angle >= 2*PI){
             this.angle -= 2*PI;
         }
@@ -104,24 +101,51 @@ class Car{
         this.y-=Math.cos(this.angle)*this.speed;
     }
 
-    draw(ctx){
-        ctx.save();
-        ctx.fillStyle = this.color;
-        ctx.translate(this.x,this.y);
-        ctx.rotate(-this.angle);
-
-        ctx.beginPath();
-        ctx.rect(
-            -this.width/2,
-            -this.height/2,
-            this.width,
-            this.height
-        );
-        ctx.fill();
-
-        ctx.restore();
+    update_angle_normal(){
+        if(this.speed!=0){
+            const flip=this.speed>0?1:-1;
+            if(this.controls.left){
+                this.angle+=this.angle_maxSensivity*flip;
+            }
+            if(this.controls.right){
+                this.angle-=this.angle_maxSensivity*flip;
+            }
+        }
     }
 
+    update_angle_realistic(){
+        if(this.controls.left){
+            this.angle_sensivity+=this.angle_acceleration;
+        }
+        else if(this.controls.right){
+            this.angle_sensivity-=this.angle_acceleration;
+        }
+
+        if(this.angle_sensivity>this.angle_maxSensivity){
+            this.angle_sensivity=this.angle_maxSensivity;
+        }
+        else if(this.angle_sensivity<-this.angle_maxSensivity){
+            this.angle_sensivity=-this.angle_maxSensivity;
+        }
+
+        if(this.angle_sensivity>0){
+            this.angle_sensivity-=this.angle_friction;
+        }
+        else if(this.angle_sensivity<0){
+            this.angle_sensivity+=this.angle_friction;
+        }
+
+        if(Math.abs(this.angle_sensivity)<this.angle_friction){
+            this.angle_sensivity=0;
+        }
+
+        if(this.speed!=0){
+            const flip=this.speed>0?1:-1;
+            this.angle+=this.angle_sensivity*flip;
+        }
+    }
+
+    // direction
     isFacingUp(){
         if((this.angle < PI/2 && this.angle >= 0) || (this.angle < 2*PI && this.angle > 1.5*PI)){
             return true;

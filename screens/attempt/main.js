@@ -7,8 +7,8 @@ const car=new Car(canvas.width*0.5,window.innerHeight*0.7,30,50,'#FF0000');
 
 const cam_borders = 0.3;
 
-var x_draw = 0;
-var y_draw = 0;
+var x_translate = 0;
+var y_translate = 0;
 
 animate();
 
@@ -17,15 +17,15 @@ function animate(){
 
     canvas.height=window.innerHeight;
 
-    if(car.y < canvas.height*cam_borders - y_draw && car.isUpward()){
-        x_draw = 0;
-        y_draw = -car.y + canvas.height*cam_borders;
+    if(car.y < canvas.height*cam_borders - y_translate && car.isUpward()){
+        x_translate = 0;
+        y_translate = -car.y + canvas.height*cam_borders;
     }
-    else if(car.y > canvas.height*(1-cam_borders) - y_draw && car.isDownward()){
-        x_draw = 0;
-        y_draw = -car.y + canvas.height*(1-cam_borders);
+    else if(car.y > canvas.height*(1-cam_borders) - y_translate && car.isDownward()){
+        x_translate = 0;
+        y_translate = -car.y + canvas.height*(1-cam_borders);
     }
-    ctx.translate(x_draw,y_draw);
+    ctx.translate(x_translate,y_translate);
     
     road.draw(ctx);
     car.draw(ctx);

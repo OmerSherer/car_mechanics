@@ -40,6 +40,8 @@ class Road{
             ctx.stroke();
         }
 
+        ctx.lineWidth=8;
+        ctx.strokeStyle="yellow";
         ctx.setLineDash([]);
         this.borders.forEach(border=>{
             ctx.beginPath();

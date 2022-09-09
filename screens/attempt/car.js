@@ -6,12 +6,17 @@ class Car{
         this.height=height;
 
         this.speed=0;
-        this.acceleration=0.2;
-        this.maxSpeed=6;
-        this.friction=0.05;
-        this.angle=0;
-        this.sensivity = 0.05;
+        this.speed_acceleration=0.2;
+        this.maxSpeed=5;
+        this.speed_friction=0.05;
 
+        this.angle=0;
+        this.angle_sensivity_left = 0;
+        this.angle_sensivity_right = 0;
+        this.angle_acceleration = 0.0012;
+        this.angle_maxSensivity = 0.05;
+        this.angle_friction = 0.0003;
+        
         this.color = color;
 
         this.controls=new Controls();
@@ -22,11 +27,13 @@ class Car{
     }
 
     #move(){
+
+        // speed
         if(this.controls.forward){
-            this.speed+=this.acceleration;
+            this.speed+=this.speed_acceleration;
         }
         if(this.controls.reverse){
-            this.speed-=this.acceleration;
+            this.speed-=this.speed_acceleration;
         }
 
         if(this.speed>this.maxSpeed){
@@ -37,22 +44,52 @@ class Car{
         }
 
         if(this.speed>0){
-            this.speed-=this.friction;
+            this.speed-=this.speed_friction;
         }
         if(this.speed<0){
-            this.speed+=this.friction;
+            this.speed+=this.speed_friction;
         }
-        if(Math.abs(this.speed)<this.friction){
+        if(Math.abs(this.speed)<this.speed_friction){
             this.speed=0;
         }
 
+
+        // angle_left
+        if(this.controls.left || this.controls.right){
+            this.angle_sensivity_left+=this.angle_acceleration;
+        }
+        if(this.angle_sensivity_left>this.angle_maxSensivity){
+            this.angle_sensivity_left=this.angle_maxSensivity;
+        }
+        if(this.angle_sensivity_left>0){
+            this.angle_sensivity_left-=this.angle_friction;
+        }
+        if(Math.abs(this.angle_sensivity_left)<this.angle_friction){
+            this.angle_sensivity_left=0;
+        }
+
+        // angle_right
+        if(this.controls.left || this.controls.right){
+            this.angle_sensivity_left+=this.angle_acceleration;
+        }
+        if(this.angle_sensivity_left>this.angle_maxSensivity){
+            this.angle_sensivity_left=this.angle_maxSensivity;
+        }
+        if(this.angle_sensivity_left>0){
+            this.angle_sensivity_left-=this.angle_friction;
+        }
+        if(Math.abs(this.angle_sensivity_left)<this.angle_friction){
+            this.angle_sensivity_left=0;
+        }
+
+        // angles
         if(this.speed!=0){
             const flip=this.speed>0?1:-1;
             if(this.controls.left){
-                this.angle+=this.sensivity*flip;
+                this.angle+=this.angle_sensivity_left*flip;
             }
             if(this.controls.right){
-                this.angle-=this.sensivity*flip;
+                this.angle-=this.angle_sensivity_left*flip;
             }
         }
 

@@ -49,6 +49,17 @@ class Car{
         );
         ctx.fill();
 
+        ctx.strokeStyle = "black";
+        ctx.beginPath();
+        ctx.moveTo(0,-this.height/2.5);
+        ctx.lineTo(0,this.height/2.5);
+        ctx.moveTo(this.width/20,-this.height/2.5);
+        ctx.lineTo(-this.width/2.5,-this.height/10);
+        ctx.moveTo(-this.width/20,-this.height/2.5);
+        ctx.lineTo(this.width/2.5,-this.height/10);
+        ctx.stroke();
+        //ctx.fill();
+
         ctx.restore();
     }
 

@@ -1,9 +1,24 @@
 body{
     margin:0;
-    background:darkgray;
-    overflow:hidden;
+    /* overflow:hidden; */
     text-align:center;
+    display: flex;
 }
+
+#stats_container {
+    width: 30vw;
+    border: solid black 2px;
+}
+
+#canvas_container {
+    width: 70vw;
+    background:darkgray;
+    overflow: hidden;
+    text-align:center;
+    border: solid black 2px;
+}
+
 #myCanvas{
     background:lightgray;
+    text-align: center;
 }

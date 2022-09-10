@@ -59,7 +59,6 @@ class Car{
         ctx.moveTo(-this.width/50,-this.height/2.5);
         ctx.lineTo(this.width/2.5,-this.height/10);
         ctx.stroke();
-        //ctx.fill();
 
         ctx.restore();
     }

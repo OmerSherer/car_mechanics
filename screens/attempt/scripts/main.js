@@ -3,7 +3,7 @@ canvas.width=400;
 
 const ctx = canvas.getContext("2d");
 const road = new Road(canvas.width*0.5, canvas.width*0.9, 5);
-const car=new Car(canvas.width*0.5,window.innerHeight*0.7,30,50,'#FF0000');
+const car=new Car(canvas.width*0.5,window.innerHeight*0.5,30,50,'#FF0000');
 
 const cam_borders = 0.3;
 

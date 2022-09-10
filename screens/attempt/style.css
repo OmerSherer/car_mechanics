@@ -1,17 +1,18 @@
 body{
     margin:0;
-    /* overflow:hidden; */
+    overflow:hidden;
     text-align:center;
     display: flex;
 }
 
 #stats_container {
-    width: 30vw;
+    width: 35vw;
     border: solid black 2px;
 }
 
 #canvas_container {
-    width: 70vw;
+    float: right;
+    width: 65vw;
     background:darkgray;
     overflow: hidden;
     text-align:center;
@@ -21,4 +22,5 @@ body{
 #myCanvas{
     background:lightgray;
     text-align: center;
+
 }

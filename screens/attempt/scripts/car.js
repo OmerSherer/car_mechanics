@@ -38,27 +38,11 @@ class Car{
         ctx.translate(this.x,this.y);
         ctx.rotate(-this.angle);
 
+        this.draw_borders(ctx);
 
-        ctx.fillStyle = this.color;
-        ctx.beginPath();
-        ctx.rect(
-            -this.width/2,
-            -this.height/2,
-            this.width,
-            this.height
-        );
-        ctx.fill();
+        this.draw_rectangle(ctx);
 
-        ctx.strokeStyle = "black";
-        ctx.lineWidth=3;
-        ctx.beginPath();
-        ctx.moveTo(0,-this.height/2.5);
-        ctx.lineTo(0,this.height/2.5);
-        ctx.moveTo(this.width/50,-this.height/2.5);
-        ctx.lineTo(-this.width/2.5,-this.height/10);
-        ctx.moveTo(-this.width/50,-this.height/2.5);
-        ctx.lineTo(this.width/2.5,-this.height/10);
-        ctx.stroke();
+        this.draw_arrow(ctx);
 
         ctx.restore();
     }
@@ -189,5 +173,43 @@ class Car{
         else{
             return false;
         }
+    }
+
+    // draw
+    draw_rectangle(ctx){
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.rect(
+            -this.width/2,
+            -this.height/2,
+            this.width,
+            this.height
+        );
+        ctx.fill();
+    }
+
+    draw_borders(ctx){
+        ctx.lineWidth=1;
+        ctx.strokeStyle = "black";
+        ctx.rect(
+            -this.width/2,
+            -this.height/2,
+            this.width,
+            this.height
+        );
+        ctx.stroke();
+    }
+
+    draw_arrow(ctx){
+        ctx.strokeStyle = "#1B66C6";
+        ctx.lineWidth=3;
+        ctx.beginPath();
+        ctx.moveTo(0,-this.height/2.5);
+        ctx.lineTo(0,this.height/2.5);
+        ctx.moveTo(this.width/50,-this.height/2.5);
+        ctx.lineTo(-this.width/2.5,-this.height/10);
+        ctx.moveTo(-this.width/50,-this.height/2.5);
+        ctx.lineTo(this.width/2.5,-this.height/10);
+        ctx.stroke();
     }
 }

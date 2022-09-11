@@ -27,4 +27,14 @@ body{
 
 h1 {
     font-family: 'Titan One',cursive;
+    font-size: 60px;
+}
+
+p {
+    font-size: 30px;
+    display: inline-block;
+}
+
+#velocity {
+    width: 70px;
 }

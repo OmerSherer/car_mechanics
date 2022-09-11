@@ -7,8 +7,8 @@ class Car{
 
         this.speed=0;
         this.speed_acceleration=0.2;
-        this.maxSpeed=5;
         this.speed_friction=0.05;
+        this.maxSpeed=5 + this.speed_friction;
 
         this.angle=0;
         this.angle_sensivity = 0;
@@ -211,5 +211,10 @@ class Car{
         ctx.moveTo(-this.width/50,-this.height/2.5);
         ctx.lineTo(this.width/2.5,-this.height/10);
         ctx.stroke();
+    }
+
+    // stats
+    getVelocity(){
+        return this.speed;
     }
 }

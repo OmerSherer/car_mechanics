@@ -10,6 +10,11 @@ const cam_borders = 0.3;
 var x_translate = 0;
 var y_translate = 0;
 
+var velocity = document.getElementById("velocity");
+setInterval(()=>{
+    velocity.innerHTML = decimal_digs(car.getVelocity(), 2);
+}, 100);
+
 animate();
 
 function animate(){

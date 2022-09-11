@@ -6,8 +6,7 @@ function main() {
     animate();
 };
 
-function initial_variables() {
-    const canvas = document.getElementById("myCanvas");
+const canvas = document.getElementById("myCanvas");
     canvas.width = 400;
 
     const ctx = canvas.getContext("2d");
@@ -23,7 +22,6 @@ function initial_variables() {
     setInterval(() => {
         velocity.innerHTML = decimal_digs(car.getVelocity(), 2);
     }, 100);
-};
 
 function animate() {
     car.update();

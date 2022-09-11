@@ -1,37 +1,45 @@
-const canvas=document.getElementById("myCanvas");
-canvas.width=400;
+$(document).ready(function () {
+    main();
+});
 
-const ctx = canvas.getContext("2d");
-const road = new Road(canvas.width*0.5, canvas.width*0.9, 5);
-const car=new Car(canvas.width*0.5,window.innerHeight*0.5,30,50,'#00E2D8');
+function main() {
+    animate();
+};
 
-const cam_borders = 0.3;
+function initial_variables() {
+    const canvas = document.getElementById("myCanvas");
+    canvas.width = 400;
 
-var x_translate = 0;
-var y_translate = 0;
+    const ctx = canvas.getContext("2d");
+    const road = new Road(canvas.width * 0.5, canvas.width * 0.9, 5);
+    const car = new Car(canvas.width * 0.5, window.innerHeight * 0.5, 30, 50, '#00E2D8');
 
-var velocity = document.getElementById("velocity");
-setInterval(()=>{
-    velocity.innerHTML = decimal_digs(car.getVelocity(), 2);
-}, 100);
+    const cam_borders = 0.3;
 
-animate();
+    var x_translate = 0;
+    var y_translate = 0;
 
-function animate(){
+    var velocity = document.getElementById("velocity");
+    setInterval(() => {
+        velocity.innerHTML = decimal_digs(car.getVelocity(), 2);
+    }, 100);
+};
+
+function animate() {
     car.update();
 
-    canvas.height=window.innerHeight;
+    canvas.height = window.innerHeight;
 
-    if(car.y < canvas.height*cam_borders - y_translate && car.isUpward()){
+    if (car.y < canvas.height * cam_borders - y_translate && car.isUpward()) {
         x_translate = 0;
-        y_translate = -car.y + canvas.height*cam_borders;
+        y_translate = -car.y + canvas.height * cam_borders;
     }
-    else if(car.y > canvas.height*(1-cam_borders) - y_translate && car.isDownward()){
+    else if (car.y > canvas.height * (1 - cam_borders) - y_translate && car.isDownward()) {
         x_translate = 0;
-        y_translate = -car.y + canvas.height*(1-cam_borders);
+        y_translate = -car.y + canvas.height * (1 - cam_borders);
     }
-    ctx.translate(x_translate,y_translate);
-    
+    ctx.translate(x_translate, y_translate);
+
     road.draw(ctx);
     car.draw(ctx);
 
